@@ -15,6 +15,7 @@ s_contact varchar2(20 char) not null
 
 create sequense sales_seq;
 
-insert into sales values (sales_seq.nextval,'원룸월세','20.1','월세','2000')
+insert into sales values (sales_seq.nextval,'망원동원룸','원룸','20.1','월세','2000',sysdate,
+'옵션:에어컨','사진1','사진2','사진3','전번');
 
 select * from sales;

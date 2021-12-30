@@ -104,7 +104,9 @@ public class SalesDAO {
 						5*1024*1024,
 						"utf-8",
 						policy);
-		String file = mr.getFilesystemName("img");
+		String file1 = mr.getFilesystemName("img1");
+		String file2 = mr.getFilesystemName("img2");
+		String file3 = mr.getFilesystemName("img3");
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mr.getParameter(""));
@@ -114,9 +116,9 @@ public class SalesDAO {
 			pstmt.setString(5, mr.getParameter(""));
 			pstmt.setString(6, mr.getParameter(""));
 			pstmt.setString(7, mr.getParameter(""));
-			pstmt.setString(8, mr.getParameter(""));
-			pstmt.setString(9, mr.getParameter(""));
-			pstmt.setString(10, mr.getParameter(""));
+			pstmt.setString(8, file1);
+			pstmt.setString(9, file2);
+			pstmt.setString(10, file3);
 			pstmt.setString(11, mr.getParameter(""));
 			pstmt.setString(12, mr.getParameter(""));
 			
@@ -176,7 +178,9 @@ public class SalesDAO {
 						5*1024*1024,
 						"utf-8",
 						policy);
-		String file = mr.getFilesystemName("img");
+		String file1 = mr.getFilesystemName("img1");
+		String file2 = mr.getFilesystemName("img2");
+		String file3 = mr.getFilesystemName("img3");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into sales values (sales_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
@@ -192,9 +196,9 @@ public class SalesDAO {
 			pstmt.setString(6,mr.getParameter(""));
 			pstmt.setString(7,mr.getParameter(""));
 			pstmt.setString(8,mr.getParameter(""));
-			pstmt.setString(9,mr.getParameter(""));
-			pstmt.setString(10,mr.getParameter(""));
-			pstmt.setString(11,mr.getParameter(""));
+			pstmt.setString(9,file1);
+			pstmt.setString(10,file2);
+			pstmt.setString(11,file3);
 			pstmt.setString(12,mr.getParameter(""));
 			
 			
