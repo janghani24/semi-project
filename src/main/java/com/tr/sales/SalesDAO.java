@@ -16,7 +16,7 @@ import com.tr.main.DBManager;
 
 public class SalesDAO {
 
-	public void sales_select(HttpServletRequest request) {
+	public void sales_select_all(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -60,7 +60,7 @@ public class SalesDAO {
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1,Integer.parseInt(request.getParameter("?")));
+			pstmt.setInt(1,Integer.parseInt(request.getParameter("no")));
 			rs = pstmt.executeQuery();
 			sales s = null;
 			ArrayList<sales> sales = new ArrayList<sales>();
@@ -93,7 +93,7 @@ public class SalesDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "update sales set s_name=?,s_salesort=?,s_size=?,s_condition=?,s_price=?,"
-				+ "s_date=?,s_etc=?,s_img1=?,s_img2=?,s_img3=?,s_contact=? where s_no=?";
+				+ "s_etc=?,s_img1=?,s_img2=?,s_img3=?,s_contact=? where s_no=?";
 		try {
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
 			String path = request.getSession().getServletContext().getRealPath("img");
@@ -115,12 +115,11 @@ public class SalesDAO {
 			pstmt.setString(4, mr.getParameter(""));
 			pstmt.setString(5, mr.getParameter(""));
 			pstmt.setString(6, mr.getParameter(""));
-			pstmt.setString(7, mr.getParameter(""));
-			pstmt.setString(8, file1);
-			pstmt.setString(9, file2);
-			pstmt.setString(10, file3);
+			pstmt.setString(7, file1);
+			pstmt.setString(8, file2);
+			pstmt.setString(9, file3);
+			pstmt.setString(10, mr.getParameter(""));
 			pstmt.setString(11, mr.getParameter(""));
-			pstmt.setString(12, mr.getParameter(""));
 			
 			
 			if (pstmt.executeUpdate() == 1) {
@@ -146,7 +145,7 @@ public class SalesDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 
-			int no = Integer.parseInt(request.getParameter("?"));
+			int no = Integer.parseInt(request.getParameter("no"));
 			pstmt.setInt(1,no);
 			
 			if (pstmt.executeUpdate() == 1) {
@@ -183,7 +182,7 @@ public class SalesDAO {
 		String file3 = mr.getFilesystemName("img3");
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into sales values (sales_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into sales values (sales_seq.nextval,?,?,?,?,?,sysdate,?,?,?,?,?)";
 		
 		try {
 			con = DBManager.connect();
@@ -194,12 +193,10 @@ public class SalesDAO {
 			pstmt.setString(4,mr.getParameter(""));
 			pstmt.setString(5,mr.getParameter(""));
 			pstmt.setString(6,mr.getParameter(""));
-			pstmt.setString(7,mr.getParameter(""));
-			pstmt.setString(8,mr.getParameter(""));
-			pstmt.setString(9,file1);
-			pstmt.setString(10,file2);
-			pstmt.setString(11,file3);
-			pstmt.setString(12,mr.getParameter(""));
+			pstmt.setString(7,file1);
+			pstmt.setString(8,file2);
+			pstmt.setString(9,file3);
+			pstmt.setString(10,mr.getParameter(""));
 			
 			
 			if (pstmt.executeUpdate() == 1) {
