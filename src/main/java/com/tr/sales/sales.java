@@ -5,6 +5,7 @@ import java.util.Date;
 public class sales {
 
 	private String name;
+	private String salesort;
 	private double size;
 	private String condition;
 	private String price;
@@ -21,6 +22,16 @@ public class sales {
 
 	public String getName() {
 		return name;
+	}
+	
+	
+
+	public String getSalesort() {
+		return salesort;
+	}
+
+	public void setSalesort(String salesort) {
+		this.salesort = salesort;
 	}
 
 	public void setName(String name) {
@@ -99,10 +110,11 @@ public class sales {
 		this.contact = contact;
 	}
 
-	public sales(String name, double size, String condition, String price, Date date, String etc, String img1,
-			String img2, String img3, String contact) {
+	public sales(String name, String salesort, double size, String condition, String price, Date date, String etc,
+			String img1, String img2, String img3, String contact) {
 		super();
 		this.name = name;
+		this.salesort = salesort;
 		this.size = size;
 		this.condition = condition;
 		this.price = price;
@@ -114,6 +126,7 @@ public class sales {
 		this.contact = contact;
 	}
 
+	
 	
 	
 	

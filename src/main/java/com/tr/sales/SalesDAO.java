@@ -30,6 +30,7 @@ public class SalesDAO {
 			while (rs.next()) {
 				
 				String name = rs.getString("s_name");
+				String salesort = rs.getString("s_salesort");
 				double size = rs.getDouble("s_size");
 				String condition = rs.getString("s_condition");
 				String price = rs.getString("s_price");
@@ -40,7 +41,7 @@ public class SalesDAO {
 				String img3 = rs.getString("s_img3");
 				String contact = rs.getString("s_contact");
 				
-				s = new sales(name, size, condition, price, date, etc, img1, img2, img3, contact);
+				s = new sales(name, salesort, size, condition, price, date, etc, img1, img2, img3, contact);
 				sales.add(s);
 			}
 			request.setAttribute("sales", sales);
@@ -66,6 +67,7 @@ public class SalesDAO {
 			while (rs.next()) {
 				
 				String name = rs.getString("s_name");
+				String salesort = rs.getString("s_salesort");
 				double size = rs.getDouble("s_size");
 				String condition = rs.getString("s_condition");
 				String price = rs.getString("s_price");
@@ -76,7 +78,7 @@ public class SalesDAO {
 				String img3 = rs.getString("s_img3");
 				String contact = rs.getString("s_contact");
 				
-				s = new sales(name, size, condition, price, date, etc, img1, img2, img3, contact);
+				s = new sales(name, salesort, size, condition, price, date, etc, img1, img2, img3, contact);
 				sales.add(s);
 			}
 			request.setAttribute("sales", sales);
@@ -90,7 +92,7 @@ public class SalesDAO {
 	public void sales_update(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "update sales set s_name=?,s_size=?,s_condition=?,s_price=?,"
+		String sql = "update sales set s_name=?,s_salesort=?,s_size=?,s_condition=?,s_price=?,"
 				+ "s_date=?,s_etc=?,s_img1=?,s_img2=?,s_img3=?,s_contact=? where s_no=?";
 		try {
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
@@ -116,6 +118,7 @@ public class SalesDAO {
 			pstmt.setString(9, mr.getParameter(""));
 			pstmt.setString(10, mr.getParameter(""));
 			pstmt.setString(11, mr.getParameter(""));
+			pstmt.setString(12, mr.getParameter(""));
 			
 			
 			if (pstmt.executeUpdate() == 1) {
@@ -176,7 +179,7 @@ public class SalesDAO {
 		String file = mr.getFilesystemName("img");
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into sales values (sales_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into sales values (sales_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			con = DBManager.connect();
@@ -192,6 +195,7 @@ public class SalesDAO {
 			pstmt.setString(9,mr.getParameter(""));
 			pstmt.setString(10,mr.getParameter(""));
 			pstmt.setString(11,mr.getParameter(""));
+			pstmt.setString(12,mr.getParameter(""));
 			
 			
 			if (pstmt.executeUpdate() == 1) {

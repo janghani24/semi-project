@@ -1,6 +1,7 @@
 create table sales(
 s_no number(3) primary key,
 s_name varchar2(20 char) not null,
+s_salesort varchar2(20 char) not null,
 s_size number(5,2) not null,
 s_condition varchar2(20 char) not null,
 s_price varchar2(20 char) not null,
